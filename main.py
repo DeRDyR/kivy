@@ -20,18 +20,20 @@ class MainScreen(Screen):
 
         layout = BoxLayout(orientation='vertical')
         first_layout = BoxLayout()
-        second_layout = BoxLayout()
+        second_layout = BoxLayout(size_hint=(0.3, 0.4), pos_hint={'center_x': 0.5, 'center_y': 0.5})
+        third_layout = BoxLayout(size_hint=(0.4, 1), pos_hint={'center_x': 0.5, 'center_y': 0.5})
 
-        text = TextInput(text="Переведите слово", font_size=25, size_hint=(0.6, 0.4))
+        text = TextInput(text="Переведите слово", font_size=25, size_hint=(0.3, 0.4), pos_hint={'center_x': 0.5, 'center_y': 0.5})
         word = Label(text="⠏⠗⠊⠺⠑⠞", font_size=50, font_name="DejaVuSans.ttf")
-        check = Button(text='Проверить')
+        check = Button(text='Проверить', font_size=30, size_hint=(0.3, 0.6), color=(0, 0, 1, 1), background_color=(0, 0, 1, 0.1), pos_hint={'center_x': 0.5, 'center_y': 0.5})
 
         first_layout.add_widget(word)
         second_layout.add_widget(text)
-        second_layout.add_widget(check)
+        third_layout.add_widget(check)
 
         layout.add_widget(first_layout)
         layout.add_widget(second_layout)
+        layout.add_widget(third_layout)
 
         self.add_widget(layout)
 
