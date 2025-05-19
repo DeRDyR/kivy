@@ -9,27 +9,27 @@ from kivy.clock import Clock
 import random
 import time
 
-class FirstScreen(Screen):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+
 
 
 class MainScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
+        self.name = 'Main'
+
         layout = BoxLayout(orientation='vertical')
         first_layout = BoxLayout()
         second_layout = BoxLayout(size_hint=(0.3, 0.4), pos_hint={'center_x': 0.5, 'center_y': 0.5})
         third_layout = BoxLayout(size_hint=(0.4, 1), pos_hint={'center_x': 0.5, 'center_y': 0.5})
 
-        text = TextInput(text="Переведите слово", font_size=25, size_hint=(0.3, 0.4), pos_hint={'center_x': 0.5, 'center_y': 0.5})
+        self.inp = TextInput(text="Переведите слово", font_size=25, size_hint=(0.3, 0.4), pos_hint={'center_x': 0.5, 'center_y': 0.5})
         word = Label(text="⠏⠗⠊⠺⠑⠞", font_size=50, font_name="DejaVuSans.ttf")
-        check = Button(text='Проверить', font_size=30, size_hint=(0.3, 0.6), color=(0, 0, 1, 1), background_color=(0, 0, 1, 0.1), pos_hint={'center_x': 0.5, 'center_y': 0.5})
+        self.check = Button(text='Проверить', font_size=30, size_hint=(0.3, 0.6), color=(0, 0, 1, 1), background_color=(0, 0, 1, 0.1), pos_hint={'center_x': 0.5, 'center_y': 0.5})
 
         first_layout.add_widget(word)
-        second_layout.add_widget(text)
-        third_layout.add_widget(check)
+        second_layout.add_widget(self.inp)
+        third_layout.add_widget(self.check)
 
         layout.add_widget(first_layout)
         layout.add_widget(second_layout)
@@ -37,14 +37,50 @@ class MainScreen(Screen):
 
         self.add_widget(layout)
 
-        text = text.text
+        self.check.on_press = self.press_button
 
+    def press_button(self):
+
+        text = self.inp.text
+
+        if text.lower() == 'привет':
+            self.go_screen_first()
+        else:
+            self.go_screen_second()
+
+
+    def go_screen_first(self):
+        self.manager.current = 'First'
+    
+    def go_screen_second(self):
+        self.manager.current = "Second"
+
+    
+
+class FirstScreen(Screen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+        text = Label(text='Это правильный ответ!')
+
+        self.add_widget(text)
+    
+class SecondScreen(Screen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+        text = Label(text='Это неправильный ответ! Правильный ответ "Привет".')
+
+        self.add_widget(text)
 
 class MyApp(App):
     def build(self):
         sm = ScreenManager()
 
-        sm.add_widget(MainScreen(name='main'))
+        sm.add_widget(MainScreen(name='Main'))
+        sm.add_widget(FirstScreen(name='First'))
+        sm.add_widget(SecondScreen(name='Second'))
+
 
         return sm
     
