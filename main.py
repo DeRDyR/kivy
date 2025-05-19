@@ -13,11 +13,6 @@ class FirstScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        
-
-
-
-
 
 class MainScreen(Screen):
     def __init__(self, **kwargs):
@@ -28,7 +23,7 @@ class MainScreen(Screen):
         second_layout = BoxLayout()
 
         text = TextInput(text="Переведите слово", font_size=25, size_hint=(0.6, 0.4))
-        word = Label(text="⠏⠗⠊⠺⠑⠞", font_size=50)
+        word = Label(text="⠏⠗⠊⠺⠑⠞", font_size=50, font_name="DejaVuSans.ttf")
         check = Button(text='Проверить')
 
         first_layout.add_widget(word)
@@ -42,11 +37,6 @@ class MainScreen(Screen):
 
         text = text.text
 
-        
-
-
-        
-
 
 class MyApp(App):
     def build(self):
@@ -59,13 +49,5 @@ class MyApp(App):
 Window.size = (2560, 1440)
 Window.top = 0
 Window.left = 0
-MyApp().run()
-
-
-        
-        
-        
-
-        
-
+MyApp().run() 
         
