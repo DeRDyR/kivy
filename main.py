@@ -6,7 +6,7 @@ from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.clock import Clock
-import random
+from random import *
 import time
 
 
@@ -24,9 +24,9 @@ class MainScreen(Screen):
         second_layout = BoxLayout(size_hint=(0.3, 0.4), pos_hint={'center_x': 0.5, 'center_y': 0.5})
         third_layout = BoxLayout(size_hint=(0.4, 1), pos_hint={'center_x': 0.5, 'center_y': 0.5})
 
-        self.inp = TextInput(text="Переведите слово", font_size=25, size_hint=(0.3, 0.4), pos_hint={'center_x': 0.5, 'center_y': 0.5}, font_name="DejaVuSans.ttf")
+        self.inp = TextInput(hint_text="Переведите слово", font_size=50, size_hint=(0.3, 0.4), pos_hint={'center_x': 0.5, 'center_y': 0.5}, font_name="Majestic Regular.ttf")
         word = Label(text="⠏⠗⠊⠺⠑⠞", font_size=50, font_name="DejaVuSans.ttf")
-        self.check = Button(text='Проверить', font_size=30, size_hint=(0.3, 0.6), color=(0, 0, 1, 1), background_color=(0, 0, 0.1, 1), pos_hint={'center_x': 0.5, 'center_y': 0.5}, font_name="DejaVuSans.ttf")
+        self.check = Button(text='Проверить', font_size=60, size_hint=(0.3, 0.6), color=(0, 0, 1, 1), background_color=(0, 0, 0.1, 1), pos_hint={'center_x': 0.5, 'center_y': 0.5}, font_name="Majestic Regular.ttf")
 
         first_layout.add_widget(word)
         second_layout.add_widget(self.inp)
@@ -62,7 +62,7 @@ class FirstScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        text = Label(text='Это правильный ответ!', font_name="DejaVuSans.ttf", font_size=30)
+        text = Label(text='Это правильный ответ!', font_name="Majestic Regular.ttf", font_size= 120)
 
         self.add_widget(text)
     
@@ -70,7 +70,7 @@ class SecondScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        text = Label(text='Это неправильный ответ! Правильный ответ "Привет".', font_name="DejaVuSans.ttf", font_size=30)
+        text = Label(text='Это неправильный ответ! Правильный ответ "Привет".', font_name="Majestic Regular.ttf", font_size=120)
 
         self.add_widget(text)
 
