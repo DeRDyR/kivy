@@ -17,6 +17,7 @@ class MainScreen(Screen):
         super().__init__(**kwargs)
 
         self.name = 'Main'
+        Window.clearcolor = (0, 0.2, 0.1, 1)
 
         layout = BoxLayout(orientation='vertical')
         first_layout = BoxLayout()
@@ -25,7 +26,7 @@ class MainScreen(Screen):
 
         self.inp = TextInput(text="Переведите слово", font_size=25, size_hint=(0.3, 0.4), pos_hint={'center_x': 0.5, 'center_y': 0.5})
         word = Label(text="⠏⠗⠊⠺⠑⠞", font_size=50, font_name="DejaVuSans.ttf")
-        self.check = Button(text='Проверить', font_size=30, size_hint=(0.3, 0.6), color=(0, 0, 1, 1), background_color=(0, 0, 1, 0.1), pos_hint={'center_x': 0.5, 'center_y': 0.5})
+        self.check = Button(text='Проверить', font_size=30, size_hint=(0.3, 0.6), color=(0, 0, 1, 1), background_color=(0, 0, 0.1, 1), pos_hint={'center_x': 0.5, 'center_y': 0.5})
 
         first_layout.add_widget(word)
         second_layout.add_widget(self.inp)
